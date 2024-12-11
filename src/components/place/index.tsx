@@ -35,7 +35,9 @@ export function Place({ data, ...props }: PlaceProps) {
       <Image source={{ uri: data.cover }} style={styles.image} />
       <View style={styles.content}>
         <Text style={styles.name}>{data.name}</Text>
-        <Text style={styles.description}>{data.description}</Text>
+        <Text style={styles.description} numberOfLines={2}>
+          {data.description}
+        </Text>
         <View style={styles.footer}>
           <IconTicket size={16} color={colors.red.base} />
           <Text style={styles.tickets}>{renderTicketLabel()}</Text>
