@@ -19,7 +19,7 @@
     "android": {
       "config": {
         "googleMaps": {
-          "apiKey": "AIzaSyC8rQ1Mrz-9Il4x6MAIOGwtbiZvrGnADeY"
+          "apiKey": "<your-google-maps-api-key>"
         }
       },
       "adaptiveIcon": {
