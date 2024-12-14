@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
-import { View, Alert } from 'react-native';
-import MapView, { Marker } from 'react-native-maps';
+import { View, Alert, Text } from 'react-native';
+import MapView, { Callout, Marker } from 'react-native-maps';
+import { router } from 'expo-router';
 
+import { fontFamily, colors } from '@/styles/theme';
 import { api } from '@/services/api';
 import { Categories } from '@/components/categories';
 import type { CategoryData } from '@/components/category';
@@ -9,8 +11,8 @@ import { Places } from '@/components/places';
 import type { PlaceData } from '@/components/place';
 
 const currentLocation = {
-  latitude: -23.561423319576985,
-  longitude: -46.656515760933374,
+  latitude: -23.56162984171063,
+  longitude: -46.656601591617566,
 };
 
 type MarketData = PlaceData & {
@@ -72,7 +74,18 @@ export default function Home() {
             identifier={place.id}
             coordinate={{ longitude: place.longitude, latitude: place.latitude }}
             image={require('@/assets/pin.png')}
-          />
+          >
+            <Callout onPress={() => router.navigate(`/market/${place.id}`)}>
+              <View>
+                <Text style={{ fontSize: 14, color: colors.gray[600], fontFamily: fontFamily.medium }}>
+                  {place.name}
+                </Text>
+                <Text style={{ fontSize: 12, color: colors.gray[600], fontFamily: fontFamily.regular }}>
+                  {place.address}
+                </Text>
+              </View>
+            </Callout>
+          </Marker>
         ))}
       </MapView>
       <Places data={places} />

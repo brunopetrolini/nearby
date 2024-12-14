@@ -31,7 +31,7 @@ export function Place({ data, ...props }: PlaceProps) {
   }
 
   return (
-    <TouchableOpacity style={styles.container} {...props}>
+    <TouchableOpacity activeOpacity={0.8} style={styles.container} {...props}>
       <Image source={{ uri: data.cover }} style={styles.image} />
       <View style={styles.content}>
         <Text style={styles.name}>{data.name}</Text>
